@@ -1,29 +1,29 @@
-# Next.js + Jest
+# Next.js Font component + Jest + Storybook
 
-This example shows how to configure Jest to work with Next.js.
+This example reproduces an error when using @next/font component and trying to render a component outside of Next.js, such as in Jest or Storybook.
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+The fonts are defined in `fonts/index.ts` and used both at a global level in `pages/_app.tsx` and at the HomePage component in `pages/index.tsx`.
 
-## How to Use
+## Storybook
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
-
-In your terminal, run the following command:
+To run Storybook, run the following command:
 
 ```bash
-npx create-next-app --example with-jest with-jest-app
+yarn storybook
 ```
+
+A browser will open showing you a failure to render the Home component.
+
+![](storybook-error.png)
+
+## Jest Tests
+
+To run tests, run the following command:
 
 ```bash
-yarn create next-app --example with-jest with-jest-app
+yarn test
 ```
 
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
+The same failure will happen, even though `next/jest' is being used to set up tests in this project.
 
-## Run Jest Tests
-
-```bash
-npm test
-```
+![](jest-error.png)
